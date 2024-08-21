@@ -1,5 +1,5 @@
-import { formatToIDRCurrency } from "@/lib/utils";
 import { BudgetListProps } from "@/types/types";
+import formatToIDRCurrency from "@/utils";
 import Link from "next/link";
 import React from "react";
 

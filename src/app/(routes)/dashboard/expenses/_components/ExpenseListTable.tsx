@@ -6,6 +6,7 @@ import { eq } from "drizzle-orm";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Trash } from "lucide-react";
+import formatToIDRCurrency from "@/utils";
 
 interface ExpenseListTableProps {
   expensiveList: ExpensiveListProps[];
@@ -62,7 +63,7 @@ const ExpenseListTable = ({
                   {expense.name}
                 </td>
                 <td className="py-4 px-6 text-left font-medium">
-                  {expense.amount}
+                  {formatToIDRCurrency(expense.amount)}
                 </td>
                 <td className="py-4 px-6 text-left font-medium">
                   {expense.createdAt}

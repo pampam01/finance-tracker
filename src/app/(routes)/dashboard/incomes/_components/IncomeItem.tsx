@@ -6,7 +6,7 @@ import { eq } from "drizzle-orm";
 import React from "react";
 import { toast } from "sonner";
 import DeleteIncome from "./DeleteIncome";
-import { formatToIDRCurrency } from "@/lib/utils";
+import formatToIDRCurrency from "@/utils";
 
 interface IncomeItemProps {
   income: BudgetListProps;

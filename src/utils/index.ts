@@ -1,18 +1,22 @@
-/**
- * Formats a number into a human-readable string with suffixes (e.g., 1K, 1.5M).
- * @param {number} num - The number to format.
- * @returns {string} - The formatted number as a string.
- */
+export const formatToIDRCurrency = (input: string | number): string => {
+  let num: number;
 
-export const formatNumber = (num: number): string => {
-  if (num >= 1e9) {
-    return (num / 1e9).toFixed(1).replace(/\.0$/, "") + "B";
+  // Handle input with "Rp", "Rp.", or "rp" prefixes
+  if (typeof input === "string") {
+    num = parseFloat(input.replace(/^(Rp\.?|rp\.?)/i, "").replace(/,/g, ""));
+  } else {
+    num = input;
   }
-  if (num >= 1e6) {
-    return (num / 1e6).toFixed(1).replace(/\.0$/, "") + "M";
-  }
-  if (num >= 1e3) {
-    return (num / 1e3).toFixed(1).replace(/\.0$/, "") + "K";
-  }
-  return num.toString();
+
+  if (isNaN(num)) return "Invalid number";
+
+  const formattedCurrency = new Intl.NumberFormat("id-ID", {
+    style: "currency",
+    currency: "IDR",
+    maximumFractionDigits: 0,
+  }).format(num);
+
+  return `${formattedCurrency}`;
 };
+
+export default formatToIDRCurrency;

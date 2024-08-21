@@ -1,4 +1,4 @@
-import formatNumber from "../../../../utils";
+import formatNumber, { formatToIDRCurrency } from "../../../../utils";
 import getFinancialAdvice from "../../../../utils/getFinancialAdvice";
 
 import { BudgetListProps, IncomeListProps } from "@/types/types";
@@ -11,7 +11,7 @@ import {
   Sparkles,
   CircleDollarSign,
 } from "lucide-react";
-import { formatToIDRCurrency } from "@/lib/utils";
+
 interface CardInfoProps {
   budgetList: BudgetListProps[];
   incomeList: IncomeListProps[];
