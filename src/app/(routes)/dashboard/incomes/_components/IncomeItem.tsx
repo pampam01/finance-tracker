@@ -6,6 +6,7 @@ import { eq } from "drizzle-orm";
 import React from "react";
 import { toast } from "sonner";
 import DeleteIncome from "./DeleteIncome";
+import { formatToIDRCurrency } from "@/lib/utils";
 
 interface IncomeItemProps {
   income: BudgetListProps;
@@ -25,25 +26,19 @@ const IncomeItem = ({ income, refreshData }: IncomeItemProps) => {
   };
 
   return (
-    <div
-      className="p-5 border rounded-2xl
-        hover:shadow-md cursor-pointer h-[170px] relative"
-    >
-      <div className="flex gap-2 items-center justify-between">
-        <div className="flex gap-2 items-center">
-          <h2
-            className="text-2xl p-3 px-4
-                  bg-slate-100 rounded-full 
-                  "
-          >
+    <div className="p-6 border rounded-2xl bg-white shadow-lg hover:shadow-xl transition-shadow duration-300 ease-in-out cursor-pointer h-[170px] relative transform hover:scale-105">
+      <div className="flex gap-4 items-center justify-between">
+        <div className="flex gap-4 items-center">
+          <div className="text-2xl p-3 px-4 bg-gradient-to-r from-green-400 via-teal-400 to-blue-400 text-white rounded-full shadow-md">
             {income?.icon}
-          </h2>
+          </div>
           <div>
-            <h2 className="font-bold">{income?.name}</h2>
-            {/* <p className="text-slate-500">Created by: {income?.totalAmount}</p> */}
+            <h2 className="font-bold text-xl text-gray-800">{income?.name}</h2>
           </div>
         </div>
-        <h2 className="font-bold text-primary text-lg"> ${income?.amount}</h2>
+        <h2 className="font-bold text-indigo-600 text-xl">
+          {formatToIDRCurrency(income?.amount)}
+        </h2>
       </div>
 
       <DeleteIncome deleteIncome={deleteIncome} />

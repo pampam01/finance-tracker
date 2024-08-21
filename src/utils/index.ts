@@ -4,7 +4,7 @@
  * @returns {string} - The formatted number as a string.
  */
 
-const formatNumber = (num: number): string => {
+export const formatNumber = (num: number): string => {
   if (num >= 1e9) {
     return (num / 1e9).toFixed(1).replace(/\.0$/, "") + "B";
   }
@@ -16,5 +16,3 @@ const formatNumber = (num: number): string => {
   }
   return num.toString();
 };
-
-export default formatNumber;

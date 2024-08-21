@@ -28,34 +28,60 @@ const ExpenseListTable = ({
     }
   };
   return (
-    <div className="mt-3 ">
-      <h2 className="font-bold text-lg">Latest Expenses</h2>
-      <div className="grid grid-cols-4 rounded-tl-xl rounded-tr-xl bg-slate-200 p-2 mt-3 border ">
-        <h2 className="font-bold text-center border">Name</h2>
-        <h2 className="font-bold text-center">Amount</h2>
-        <h2 className="font-bold text-center">Date</h2>
-        <h2 className="font-bold text-center">Action</h2>
+    <div className="mt-10 max-w-5xl mx-auto">
+      <h2 className="text-3xl font-extrabold text-gray-800 text-center mb-8">
+        Latest Expenses
+      </h2>
+      <div className="shadow-lg rounded-lg border border-gray-200">
+        <table className="w-full bg-white rounded-lg">
+          <thead className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white">
+            <tr>
+              <th className="py-4 px-6 text-left font-semibold text-lg tracking-wider">
+                Name
+              </th>
+              <th className="py-4 px-6 text-left font-semibold text-lg tracking-wider">
+                Amount
+              </th>
+              <th className="py-4 px-6 text-left font-semibold text-lg tracking-wider">
+                Date
+              </th>
+              <th className="py-4 px-6 text-center font-semibold text-lg tracking-wider">
+                Action
+              </th>
+            </tr>
+          </thead>
+          <tbody className="text-gray-700 text-sm">
+            {expensiveList.map((expense, index) => (
+              <tr
+                key={index}
+                className={`${
+                  index % 2 === 0 ? "bg-gray-100" : "bg-white"
+                } border-b border-gray-200 hover:bg-gradient-to-r hover:from-indigo-100 hover:via-purple-100 hover:to-pink-100 transition duration-300 ease-in-out transform hover:scale-105`}
+              >
+                <td className="py-4 px-6 whitespace-nowrap text-left font-medium">
+                  {expense.name}
+                </td>
+                <td className="py-4 px-6 text-left font-medium">
+                  {expense.amount}
+                </td>
+                <td className="py-4 px-6 text-left font-medium">
+                  {expense.createdAt}
+                </td>
+                <td className="py-4 px-6 text-center">
+                  <Button
+                    variant={"destructive"}
+                    className="bg-red-500 text-white px-4 py-2 rounded-full shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-110"
+                    onClick={() => deleteExpense(expense)}
+                  >
+                    <Trash className="w-4 h-4 inline-block mr-2" />
+                    Delete
+                  </Button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
-      {expensiveList.map((expense, index) => (
-        <div
-          className="grid grid-cols-4 bg-slate-50 rounded-bl-xl rounded-br-xl p-2"
-          key={index}
-        >
-          <h2 className="text-center">{expense.name}</h2>
-          <h2 className="text-center">{expense.amount}</h2>
-          <h2 className="text-center">{expense.createdAt}</h2>
-
-          <div className="flex justify-center">
-            <Button
-              variant={"destructive"}
-              className=" "
-              onClick={() => deleteExpense(expense)}
-            >
-              <Trash className="w-4 h-4" />
-            </Button>
-          </div>
-        </div>
-      ))}
     </div>
   );
 };

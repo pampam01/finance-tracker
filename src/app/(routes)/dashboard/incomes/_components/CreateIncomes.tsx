@@ -94,7 +94,7 @@ const CreateIncomes = ({ refreshData }: CreateIncomesProps) => {
                 <div className="mt-2">
                   <h2 className="text-black font-medium my-1">Source Name</h2>
                   <Input
-                    placeholder="e.g. Youtube"
+                    placeholder="example: Youtube"
                     onChange={(e) => setName(e.target.value)}
                   />
                 </div>
@@ -102,7 +102,7 @@ const CreateIncomes = ({ refreshData }: CreateIncomesProps) => {
                   <h2 className="text-black font-medium my-1">Montly Amount</h2>
                   <Input
                     type="number"
-                    placeholder="e.g. 5000$"
+                    placeholder="example: 5000"
                     onChange={(e) => setAmount(e.target.value)}
                   />
                 </div>

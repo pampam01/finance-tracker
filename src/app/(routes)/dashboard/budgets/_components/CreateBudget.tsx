@@ -92,7 +92,7 @@ const CreateBudget = ({ refreshData }: CreateBudgetProps) => {
                 <div className="mt-2">
                   <h2 className="text-black font-medium my-1">Budget Name</h2>
                   <Input
-                    placeholder="e.g. Home Decor"
+                    placeholder="example: Home Decor"
                     onChange={(e) => setName(e.target.value)}
                   />
                 </div>
@@ -100,7 +100,7 @@ const CreateBudget = ({ refreshData }: CreateBudgetProps) => {
                   <h2 className="text-black font-medium my-1">Budget Amount</h2>
                   <Input
                     type="number"
-                    placeholder="e.g. 5000$"
+                    placeholder="example: 5000"
                     onChange={(e) => setAmount(e.target.value)}
                   />
                 </div>
